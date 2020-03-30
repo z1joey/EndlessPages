@@ -10,7 +10,7 @@
         <!--Page View Controller-->
         <scene sceneID="gsT-Yz-5Lf">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="D8R-ct-t74" customClass="PageViewController" customModule="EndlessPages" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="D8R-ct-t74" customClass="PageViewController" customModule="EndlessPages" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgC-MG-qZt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-475" y="173"/>

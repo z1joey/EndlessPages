@@ -34,20 +34,16 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
         guard let current = viewController as? ViewController else { return nil }
         guard var index = pages.firstIndex(of: current) else { return nil }
 
-        index += 1
-
         if index == NSNotFound {
             return nil
         }
 
-        // -1, 0, 1
+        index += 1
+
         if index >= pages.count {
-            // -1 becomes 2
-            // pages.forEach { $0?.index += 3 }
             index = 0
         }
 
-        // print(index)
         return pages[index]
     }
 
@@ -55,33 +51,29 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
         guard let current = viewController as? ViewController else { return nil }
         guard var index = pages.firstIndex(of: current) else { return nil }
 
-        index -= 1
-
         if index == NSNotFound {
             return nil
         }
 
-        // -1, 1, 0
+        index -= 1
+
         if index < 0 {
-            // 0 becomes -2
-            // pages.forEach { $0?.index -= 3 }
             index = pages.count - 1
         }
 
-        // print(index)
         return pages[index]
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let currentVC = pageViewController.children.first as? ViewController else { return }
+        guard let currentVC = pageViewController.viewControllers?.last as? ViewController else { return }
         guard let currentIndex = pages.firstIndex(of: currentVC) else { return }
 
         if completed {
             var lastIndex = currentIndex - 1
             var nextIndex = currentIndex + 1
 
-            if lastIndex < 0 { lastIndex = 2 }
-            if nextIndex > (pages.count - 1) { nextIndex = 0 }
+            if lastIndex < 0 { lastIndex = pages.count - 1 }
+            if nextIndex >= pages.count { nextIndex = 0 }
 
             if pages.indices.contains(lastIndex) {
                 pages[lastIndex]?.index = currentVC.index - 1
